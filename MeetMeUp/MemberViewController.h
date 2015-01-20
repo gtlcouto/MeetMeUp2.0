@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MemberViewController.h
 //  MeetMeUp
 //
 //  Created by Gustavo Couto on 2015-01-19.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface MemberViewController : UIViewController
 
+@property NSNumber * memberId;
 
 @end
-

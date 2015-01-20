@@ -9,11 +9,17 @@
 /* Begin PBXBuildFile section */
 		3565F9A01A6DAB9E003B086F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3565F99F1A6DAB9E003B086F /* main.m */; };
 		3565F9A31A6DAB9E003B086F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3565F9A21A6DAB9E003B086F /* AppDelegate.m */; };
-		3565F9A61A6DAB9E003B086F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3565F9A51A6DAB9E003B086F /* ViewController.m */; };
+		3565F9A61A6DAB9E003B086F /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3565F9A51A6DAB9E003B086F /* RootViewController.m */; };
 		3565F9A91A6DAB9E003B086F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3565F9A71A6DAB9E003B086F /* Main.storyboard */; };
 		3565F9AB1A6DAB9E003B086F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3565F9AA1A6DAB9E003B086F /* Images.xcassets */; };
 		3565F9AE1A6DAB9E003B086F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3565F9AC1A6DAB9E003B086F /* LaunchScreen.xib */; };
 		3565F9BA1A6DAB9E003B086F /* MeetMeUpTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3565F9B91A6DAB9E003B086F /* MeetMeUpTests.m */; };
+		3565F9C61A6DB78F003B086F /* MeetUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 3565F9C51A6DB78F003B086F /* MeetUp.m */; };
+		3565F9CB1A6DBBCE003B086F /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3565F9CA1A6DBBCE003B086F /* DetailViewController.m */; };
+		3565F9CE1A6DC184003B086F /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3565F9CD1A6DC184003B086F /* WebViewController.m */; };
+		3565F9D11A6DD1A4003B086F /* Member.m in Sources */ = {isa = PBXBuildFile; fileRef = 3565F9D01A6DD1A4003B086F /* Member.m */; };
+		3565F9D41A6DD1D2003B086F /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 3565F9D31A6DD1D2003B086F /* Comment.m */; };
+		3565F9DF1A6DE7F8003B086F /* MemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3565F9DE1A6DE7F8003B086F /* MemberViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,14 +38,26 @@
 		3565F99F1A6DAB9E003B086F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3565F9A11A6DAB9E003B086F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3565F9A21A6DAB9E003B086F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		3565F9A41A6DAB9E003B086F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		3565F9A51A6DAB9E003B086F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		3565F9A41A6DAB9E003B086F /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		3565F9A51A6DAB9E003B086F /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		3565F9A81A6DAB9E003B086F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3565F9AA1A6DAB9E003B086F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3565F9AD1A6DAB9E003B086F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		3565F9B31A6DAB9E003B086F /* MeetMeUpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeetMeUpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3565F9B81A6DAB9E003B086F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3565F9B91A6DAB9E003B086F /* MeetMeUpTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeetMeUpTests.m; sourceTree = "<group>"; };
+		3565F9C41A6DB78F003B086F /* MeetUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeetUp.h; sourceTree = "<group>"; };
+		3565F9C51A6DB78F003B086F /* MeetUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeetUp.m; sourceTree = "<group>"; };
+		3565F9C91A6DBBCE003B086F /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		3565F9CA1A6DBBCE003B086F /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		3565F9CC1A6DC184003B086F /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		3565F9CD1A6DC184003B086F /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		3565F9CF1A6DD1A4003B086F /* Member.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Member.h; sourceTree = "<group>"; };
+		3565F9D01A6DD1A4003B086F /* Member.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Member.m; sourceTree = "<group>"; };
+		3565F9D21A6DD1D2003B086F /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
+		3565F9D31A6DD1D2003B086F /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
+		3565F9DD1A6DE7F8003B086F /* MemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemberViewController.h; sourceTree = "<group>"; };
+		3565F9DE1A6DE7F8003B086F /* MemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemberViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,10 +99,9 @@
 		3565F99C1A6DAB9E003B086F /* MeetMeUp */ = {
 			isa = PBXGroup;
 			children = (
-				3565F9A11A6DAB9E003B086F /* AppDelegate.h */,
-				3565F9A21A6DAB9E003B086F /* AppDelegate.m */,
-				3565F9A41A6DAB9E003B086F /* ViewController.h */,
-				3565F9A51A6DAB9E003B086F /* ViewController.m */,
+				3565F9C31A6DB763003B086F /* Custom Classes */,
+				3565F9C81A6DBB7A003B086F /* AppDelegate */,
+				3565F9C71A6DBB70003B086F /* ViewControllers */,
 				3565F9A71A6DAB9E003B086F /* Main.storyboard */,
 				3565F9AA1A6DAB9E003B086F /* Images.xcassets */,
 				3565F9AC1A6DAB9E003B086F /* LaunchScreen.xib */,
@@ -117,6 +134,43 @@
 				3565F9B81A6DAB9E003B086F /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3565F9C31A6DB763003B086F /* Custom Classes */ = {
+			isa = PBXGroup;
+			children = (
+				3565F9C41A6DB78F003B086F /* MeetUp.h */,
+				3565F9C51A6DB78F003B086F /* MeetUp.m */,
+				3565F9CF1A6DD1A4003B086F /* Member.h */,
+				3565F9D01A6DD1A4003B086F /* Member.m */,
+				3565F9D21A6DD1D2003B086F /* Comment.h */,
+				3565F9D31A6DD1D2003B086F /* Comment.m */,
+			);
+			name = "Custom Classes";
+			sourceTree = "<group>";
+		};
+		3565F9C71A6DBB70003B086F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3565F9A41A6DAB9E003B086F /* RootViewController.h */,
+				3565F9A51A6DAB9E003B086F /* RootViewController.m */,
+				3565F9C91A6DBBCE003B086F /* DetailViewController.h */,
+				3565F9CA1A6DBBCE003B086F /* DetailViewController.m */,
+				3565F9CC1A6DC184003B086F /* WebViewController.h */,
+				3565F9CD1A6DC184003B086F /* WebViewController.m */,
+				3565F9DD1A6DE7F8003B086F /* MemberViewController.h */,
+				3565F9DE1A6DE7F8003B086F /* MemberViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		3565F9C81A6DBB7A003B086F /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				3565F9A11A6DAB9E003B086F /* AppDelegate.h */,
+				3565F9A21A6DAB9E003B086F /* AppDelegate.m */,
+			);
+			name = AppDelegate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,9 +273,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3565F9A61A6DAB9E003B086F /* ViewController.m in Sources */,
+				3565F9CB1A6DBBCE003B086F /* DetailViewController.m in Sources */,
+				3565F9CE1A6DC184003B086F /* WebViewController.m in Sources */,
+				3565F9A61A6DAB9E003B086F /* RootViewController.m in Sources */,
 				3565F9A31A6DAB9E003B086F /* AppDelegate.m in Sources */,
+				3565F9D11A6DD1A4003B086F /* Member.m in Sources */,
 				3565F9A01A6DAB9E003B086F /* main.m in Sources */,
+				3565F9C61A6DB78F003B086F /* MeetUp.m in Sources */,
+				3565F9DF1A6DE7F8003B086F /* MemberViewController.m in Sources */,
+				3565F9D41A6DD1D2003B086F /* Comment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
