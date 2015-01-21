@@ -17,5 +17,5 @@
 @property NSString * state;
 
 
-
+-(instancetype)initWithDictionary:(NSDictionary *)member;
 @end

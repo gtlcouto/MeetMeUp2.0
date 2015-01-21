@@ -16,4 +16,6 @@
 @property NSString * comment;
 @property NSDate * time;
 
+-(instancetype)initWithDictionary:(NSDictionary *)comments;
+
 @end

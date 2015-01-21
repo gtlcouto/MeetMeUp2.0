@@ -8,8 +8,9 @@
 
 #import "MemberViewController.h"
 #import "Member.h"
+#import "Parser.h"
 
-@interface MemberViewController ()
+@interface MemberViewController ()<ParserDelegate>
 
 @property NSMutableArray * memberObjArray;
 @property Member * currentMember;
@@ -18,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *countryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *stateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *cityLabel;
+@property Parser * parser;
 
 @end
 
@@ -26,31 +28,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.currentMember = [Member new];
-    [self fetchJsonFromURL];
+    self.parser = [Parser new];
+    self.parser.delegate = self;
+    [self.parser getMemberByMemberId:self.memberId];
 }
+
+
+#pragma mark - Delegate Methods
+-(void)fetchedMember:(Member *)returnMember
+{
+    self.currentMember = returnMember;
+    [self reloadUI];
+}
+
 
 #pragma mark - Helper Methods
--(void)fetchJsonFromURL
-{
-    self.memberObjArray = [NSMutableArray new];
-    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.meetup.com/2/member/%@?&sign=true&photo-host=public&page=20&key=3a4d77271f957474a481b6c2c5a4a13", self.memberId]];
-
-    NSURLRequest * request = [NSURLRequest requestWithURL:url];
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        NSDictionary * member = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-
-
-        self.currentMember.name = member[@"name"];
-        self.currentMember.memberId = [NSString stringWithFormat:@"%@", member[@"id"]];
-        self.currentMember.country = member[@"country"];
-        self.currentMember.city = member[@"city"];
-        self.currentMember.state = member[@"state"];
-
-        [self reloadUI];
-        
-    }];
-    
-}
 
 -(void)reloadUI
 {

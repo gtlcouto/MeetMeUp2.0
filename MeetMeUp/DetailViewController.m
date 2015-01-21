@@ -10,14 +10,16 @@
 #import "WebViewController.h"
 #import "MemberViewController.h"
 #import "Comment.h"
+#import "Parser.h"
 
-@interface DetailViewController () <UITableViewDataSource, UITableViewDataSource>
+@interface DetailViewController () <UITableViewDataSource, UITableViewDataSource, ParserDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *rsvpYesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (weak, nonatomic) IBOutlet UITextView *descTextView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property NSMutableArray * commentsObjArray;
+@property Parser * parser;
 
 @end
 
@@ -26,7 +28,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self reloadUI];
-    [self fetchJsonFromURL];
+    self.parser = [Parser new];
+    self.parser.delegate = self;
+    [self.parser getCommentsWithEventId:self.currentMeetUp.eventId];
 
 }
 
@@ -47,6 +51,12 @@
     return cell;
 }
 
+-(void)fetchedComments:(NSMutableArray *)returnArray
+{
+    self.commentsObjArray = returnArray;
+    [self.tableView reloadData];
+}
+
 #pragma mark - Helper Methods
 
 -(void)reloadUI
@@ -56,36 +66,6 @@
     self.addressLabel.text = self.currentMeetUp.address;
     self.descTextView.text = self.currentMeetUp.desc;
 }
-
--(void)fetchJsonFromURL
-{
-    self.commentsObjArray = [NSMutableArray new];
-    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.meetup.com/2/event_comments?&sign=true&photo-host=public&event_id=%@&page=20&key=3a4d77271f957474a481b6c2c5a4a13", self.currentMeetUp.eventId]];
-    NSURLRequest * request = [NSURLRequest requestWithURL:url];
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        NSDictionary * commentsDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        NSArray * commentsArray = commentsDictionary[@"results"];
-
-        for (NSDictionary * comment in commentsArray)
-        {
-            Comment * myComment = [Comment new];
-            myComment.memberName = comment[@"member_name"];
-            myComment.memberId = comment[@"member_id"];
-            myComment.comment = comment[@"comment"];
-            myComment.time = comment[@"time"];
-
-
-            [self.commentsObjArray addObject:myComment];
-        }
-
-        [self.tableView reloadData];
-        
-    }];
-    
-}
-
-
-
 
 
 #pragma mark - Segue Methods

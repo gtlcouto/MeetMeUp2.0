@@ -20,6 +20,7 @@
 		3565F9D11A6DD1A4003B086F /* Member.m in Sources */ = {isa = PBXBuildFile; fileRef = 3565F9D01A6DD1A4003B086F /* Member.m */; };
 		3565F9D41A6DD1D2003B086F /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 3565F9D31A6DD1D2003B086F /* Comment.m */; };
 		3565F9DF1A6DE7F8003B086F /* MemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3565F9DE1A6DE7F8003B086F /* MemberViewController.m */; };
+		3565F9E21A6E1AE1003B086F /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3565F9E11A6E1AE1003B086F /* Parser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		3565F9D31A6DD1D2003B086F /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		3565F9DD1A6DE7F8003B086F /* MemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemberViewController.h; sourceTree = "<group>"; };
 		3565F9DE1A6DE7F8003B086F /* MemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemberViewController.m; sourceTree = "<group>"; };
+		3565F9E01A6E1AE1003B086F /* Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
+		3565F9E11A6E1AE1003B086F /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +102,7 @@
 		3565F99C1A6DAB9E003B086F /* MeetMeUp */ = {
 			isa = PBXGroup;
 			children = (
+				3565F9E31A6E2055003B086F /* Parser */,
 				3565F9C31A6DB763003B086F /* Custom Classes */,
 				3565F9C81A6DBB7A003B086F /* AppDelegate */,
 				3565F9C71A6DBB70003B086F /* ViewControllers */,
@@ -171,6 +175,15 @@
 				3565F9A21A6DAB9E003B086F /* AppDelegate.m */,
 			);
 			name = AppDelegate;
+			sourceTree = "<group>";
+		};
+		3565F9E31A6E2055003B086F /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				3565F9E11A6E1AE1003B086F /* Parser.m */,
+				3565F9E01A6E1AE1003B086F /* Parser.h */,
+			);
+			name = Parser;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,6 +290,7 @@
 				3565F9CE1A6DC184003B086F /* WebViewController.m in Sources */,
 				3565F9A61A6DAB9E003B086F /* RootViewController.m in Sources */,
 				3565F9A31A6DAB9E003B086F /* AppDelegate.m in Sources */,
+				3565F9E21A6E1AE1003B086F /* Parser.m in Sources */,
 				3565F9D11A6DD1A4003B086F /* Member.m in Sources */,
 				3565F9A01A6DAB9E003B086F /* main.m in Sources */,
 				3565F9C61A6DB78F003B086F /* MeetUp.m in Sources */,

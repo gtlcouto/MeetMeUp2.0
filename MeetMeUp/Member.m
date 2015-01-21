@@ -10,4 +10,16 @@
 
 @implementation Member
 
+-(instancetype)initWithDictionary:(NSDictionary *)member
+{
+    self = [super init];
+
+    self.name = member[@"name"];
+    self.memberId = [NSString stringWithFormat:@"%@", member[@"id"]];
+    self.country = member[@"country"];
+    self.city = member[@"city"];
+    self.state = member[@"state"];
+
+    return self;
+}
 @end

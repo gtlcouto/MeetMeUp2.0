@@ -18,4 +18,9 @@
 @property NSNumber * eventId;
 
 
+//inits
+
+-(instancetype)initWithDictionary:(NSDictionary *)meetUp;
+
+
 @end

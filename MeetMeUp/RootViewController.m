@@ -9,13 +9,15 @@
 #import "RootViewController.h"
 #import "DetailViewController.h"
 #import "MeetUp.h"
+#import "Parser.h"
 
-@interface RootViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
+@interface RootViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, ParserDelegate>
 
 @property NSArray * meetUpsArray;
 @property NSMutableArray * meetUpObjArray;
 @property NSDictionary * meetUpsDictionary;
 @property NSDictionary * meetUpDictionary;
+@property Parser * parser;
 
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -28,7 +30,10 @@
 @implementation RootViewController
 
 - (void)viewDidLoad {
-    [self fetchJsonFromURL];
+
+    self.parser = [Parser new];
+    self.parser.delegate = self;
+    [self.parser getMeetUpsWithString:@""];
 
 }
 
@@ -36,7 +41,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.meetUpsArray.count;
+    return self.meetUpObjArray.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -52,47 +57,19 @@
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    [self fetchJsonFromURL];
+    [self.parser getMeetUpsWithString:self.tableSearchBar.text];
 }
 
 
-#pragma mark - Helper Methods
+#pragma mark - Custom Delegate
 
--(void)fetchJsonFromURL
+-(void)fetchedMeetups:(NSMutableArray *)returnArray
 {
-    self.meetUpObjArray = [NSMutableArray new];
-    NSURL * url;
-    if (!self.tableSearchBar.text || [self.tableSearchBar.text  isEqual: @""]) {
-        url = [NSURL URLWithString:@"https://api.meetup.com/2/open_events.json?zip=60604&text=mobile&time=,1w&key=3a4d77271f957474a481b6c2c5a4a13"];
-    }else
-    {
-        url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.meetup.com/2/open_events.json?zip=60604&text=%@&time=,1w&key=3a4d77271f957474a481b6c2c5a4a13", self.tableSearchBar.text]];
-    }
-    NSURLRequest * request = [NSURLRequest requestWithURL:url];
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        self.meetUpsDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        self.meetUpsArray = self.meetUpsDictionary[@"results"];
-
-        for (NSDictionary * meetUp in self.meetUpsArray)
-        {
-            MeetUp * myMeetUp = [MeetUp new];
-            myMeetUp.name = meetUp[@"name"];
-            myMeetUp.desc = meetUp[@"description"];
-            myMeetUp.rsvpCount = meetUp[@"yes_rsvp_count"];
-            NSDictionary * venue = meetUp[@"venue"];
-            myMeetUp.address = venue[@"address_1"];
-            myMeetUp.eventUrl = meetUp[@"event_url"];
-            myMeetUp.eventId = meetUp[@"id"];
-
-
-            [self.meetUpObjArray addObject:myMeetUp];
-        }
-
-        [self.tableView reloadData];
-
-    }];
-
+    self.meetUpObjArray = returnArray;
+    [self.tableView reloadData];
 }
+
+
 
 #pragma mark - Segue Methods
 
