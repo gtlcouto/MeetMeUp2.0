@@ -13,7 +13,7 @@
 @interface MemberViewController ()<ParserDelegate>
 
 @property NSMutableArray * memberObjArray;
-@property Member * currentMember;
+@property (nonatomic)  Member * currentMember;
 @property (weak, nonatomic) IBOutlet UILabel *idLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *countryLabel;
@@ -28,17 +28,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.currentMember = [Member new];
-    self.parser = [Parser new];
-    self.parser.delegate = self;
-    [self.parser getMemberByMemberId:self.memberId];
+    [Member getMemberByMemberId:self.memberId withCompletion:^(Member *member) {
+        self.currentMember = member;
+    }];
 }
-
-
-#pragma mark - Delegate Methods
--(void)fetchedMember:(Member *)returnMember
+#pragma overload setters
+-(void)setCurrentMember:(Member *)currentMember
 {
-    self.currentMember = returnMember;
+    _currentMember = currentMember;
     [self reloadUI];
+
 }
 
 

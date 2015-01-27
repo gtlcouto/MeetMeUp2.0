@@ -375,6 +375,7 @@
                         <viewControllerLayoutGuide type="bottom" id="TY3-UQ-0bq"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2ju-oa-Nvv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ny-qF-K3y">

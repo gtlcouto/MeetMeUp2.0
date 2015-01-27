@@ -18,4 +18,5 @@
 
 
 -(instancetype)initWithDictionary:(NSDictionary *)member;
++(void)getMemberByMemberId:(NSNumber *)memberId withCompletion:(void(^)(Member * member))complete ;
 @end

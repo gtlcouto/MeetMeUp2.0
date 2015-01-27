@@ -13,8 +13,8 @@
 
 @interface RootViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, ParserDelegate>
 
-@property NSArray * meetUpsArray;
-@property NSMutableArray * meetUpObjArray;
+@property (nonatomic)  NSArray * meetUpsArray;
+@property (nonatomic)  NSMutableArray * meetUpObjArray;
 @property NSDictionary * meetUpsDictionary;
 @property NSDictionary * meetUpDictionary;
 @property Parser * parser;
@@ -30,11 +30,16 @@
 @implementation RootViewController
 
 - (void)viewDidLoad {
+    [MeetUp getMeetUpsWithString:self.tableSearchBar.text withCompletion:^(NSArray *array) {
+        self.meetUpObjArray = [array mutableCopy];
+    }];
 
-    self.parser = [Parser new];
-    self.parser.delegate = self;
-    [self.parser getMeetUpsWithString:@""];
-
+}
+#pragma mark - overload setter
+-(void)setMeetUpObjArray:(NSMutableArray *)meetUpObjArray
+{
+    _meetUpObjArray = meetUpObjArray;
+    [self.tableView reloadData];
 }
 
 #pragma mark - Delegate Methods
@@ -47,8 +52,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    MeetUp * myMeetUp;
-    myMeetUp = [self.meetUpObjArray objectAtIndex:indexPath.row];
+    MeetUp * myMeetUp = [[MeetUp alloc] initWithDictionary:[self.meetUpObjArray objectAtIndex:indexPath.row]];
     cell.textLabel.text = myMeetUp.name;
     cell.detailTextLabel.text = myMeetUp.address;
 
@@ -57,18 +61,10 @@
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    [self.parser getMeetUpsWithString:self.tableSearchBar.text];
+    [MeetUp getMeetUpsWithString:self.tableSearchBar.text withCompletion:^(NSArray *array) {
+        self.meetUpObjArray = [array mutableCopy];
+    }];
 }
-
-
-#pragma mark - Custom Delegate
-
--(void)fetchedMeetups:(NSMutableArray *)returnArray
-{
-    self.meetUpObjArray = returnArray;
-    [self.tableView reloadData];
-}
-
 
 
 #pragma mark - Segue Methods
@@ -83,7 +79,7 @@
 
         NSIndexPath *myIndexPath = [self.tableView
                                     indexPathForSelectedRow];
-        self.currentMeetUp = [self.meetUpObjArray objectAtIndex:myIndexPath.row];
+        self.currentMeetUp = [[MeetUp alloc] initWithDictionary:[self.meetUpObjArray objectAtIndex:myIndexPath.row]];
 
         detailVC.currentMeetUp = self.currentMeetUp;
     }

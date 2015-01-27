@@ -22,5 +22,7 @@
 
 -(instancetype)initWithDictionary:(NSDictionary *)meetUp;
 
++(void)getMeetUpsWithString:(NSString *)string withCompletion:(void(^)(NSArray * array))complete ;
+
 
 @end

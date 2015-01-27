@@ -18,4 +18,7 @@
 
 -(instancetype)initWithDictionary:(NSDictionary *)comments;
 
+//-(void)getCommentsWithEventId:(NSNumber *)eventId;
++(void)getCommentsWithEventId:(NSNumber *)eventId withCompletion:(void(^)(NSArray * commentsArray))complete;
+
 @end

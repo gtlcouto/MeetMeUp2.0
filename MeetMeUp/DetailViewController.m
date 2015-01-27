@@ -1,4 +1,4 @@
-//
+ //
 //  DetailViewController.m
 //  MeetMeUp
 //
@@ -18,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (weak, nonatomic) IBOutlet UITextView *descTextView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property NSMutableArray * commentsObjArray;
+@property (nonatomic)  NSMutableArray * commentsObjArray;
 @property Parser * parser;
 
 @end
@@ -28,11 +28,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self reloadUI];
-    self.parser = [Parser new];
-    self.parser.delegate = self;
-    [self.parser getCommentsWithEventId:self.currentMeetUp.eventId];
+    [Comment getCommentsWithEventId:self.currentMeetUp.eventId withCompletion:^(NSArray *commentsArray) {
+        self.commentsObjArray = [commentsArray mutableCopy];
+    }];
+
 
 }
+#pragma mark - Setter Methods
+
+-(void)setCommentsObjArray:(NSMutableArray *)commentsObjArray
+{
+    _commentsObjArray = commentsObjArray;
+    [self.tableView reloadData];
+}
+
 
 #pragma mark - Delegate Methods
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -49,12 +58,6 @@
     cell.detailTextLabel.text = comment.comment;
 
     return cell;
-}
-
--(void)fetchedComments:(NSMutableArray *)returnArray
-{
-    self.commentsObjArray = returnArray;
-    [self.tableView reloadData];
 }
 
 #pragma mark - Helper Methods
